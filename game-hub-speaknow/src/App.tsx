@@ -10,7 +10,7 @@ const App = () => {
           base: `"nav" "main"`,
           lg: `"nav nav" "aside main"`,
         }}
-        gridTemplateColumns={"150px 1fr"}
+        gridTemplateColumns={{ base: "1fr", lg: "150px 1fr" }}
       >
         <GridItem area="nav">
           <NavBar />
