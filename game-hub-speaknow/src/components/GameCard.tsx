@@ -1,5 +1,6 @@
 import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import Game from "../entities/Game";
+import CriticScore from "./CriticScore";
 
 interface Props {
   game: Game;
@@ -13,6 +14,7 @@ const GameCard = ({ game }: Props) => {
           <Image src={game.background_image} />
           <Box padding={4}>
             <Heading fontSize="2xl">{game.name}</Heading>
+            <CriticScore gameScore={game.metacritic} />
           </Box>
         </CardBody>
       </Card>
