@@ -22,7 +22,12 @@ const GenreList = () => {
 
   // console.log(hasNextPage, hasPreviousPage, genres);
   // console.log((genres?.pages)!.length);
-  console.log(genres?.pages, genres?.pages.at(-1)?.next);
+  // console.log(genres?.pages as InfiniteData, genres?.pages.at(-1)?.next);
+
+  // const genresPaginated =
+  //   genres?.pages[0].next === genres?.pages[1].next
+  //     ? { pages: genres?.pages[0], pageParams: [1] }
+  //     : genres;
 
   return (
     <>
@@ -30,7 +35,7 @@ const GenreList = () => {
         Genres
       </Heading>
       <List spacing={2}>
-        {genres?.pages.map((page, index) => (
+        {genres?.pages?.map((page, index) => (
           <React.Fragment key={index}>
             {page.results.map((genre) => (
               <HStack key={genre.id}>
@@ -65,7 +70,10 @@ const GenreList = () => {
           </HStack>
         </Button>
       ) : (
-        <Button marginTop={4} onClick={() => fetchPreviousPage()}>
+        <Button
+          marginTop={4}
+          onClick={() => fetchPreviousPage({ pageParam: 1 })}
+        >
           <HStack>
             <Icon as={BsChevronUp} />
             <Text>Hide</Text>

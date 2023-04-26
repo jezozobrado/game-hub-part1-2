@@ -18,8 +18,8 @@ const useGenres = (pageSize: number) => {
     },
     staleTime: 24 * 60 * 60 * 1000,
     keepPreviousData: true,
-    getNextPageParam: (lastPage, allPages) => allPages.length + 1,
-    getPreviousPageParam: (firstPage, allPages) => 1,
+    getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
+    getPreviousPageParam: (firstPage, _allPages) => firstPage,
   });
 };
 export default useGenres;
