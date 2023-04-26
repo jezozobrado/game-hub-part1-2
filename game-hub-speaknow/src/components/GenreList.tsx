@@ -12,22 +12,18 @@ import useGenres from "../hooks/useGenres";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import React from "react";
 
-const GenreList = () => {
+interface Props {
+  selectedGenreId: number | null;
+  onSelectGenre: (selectedGenreId: number | null) => void;
+}
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const pageSize = 12;
+
   const {
     data: genres,
     fetchNextPage,
     fetchPreviousPage,
   } = useGenres(pageSize);
-
-  // console.log(hasNextPage, hasPreviousPage, genres);
-  // console.log((genres?.pages)!.length);
-  // console.log(genres?.pages as InfiniteData, genres?.pages.at(-1)?.next);
-
-  // const genresPaginated =
-  //   genres?.pages[0].next === genres?.pages[1].next
-  //     ? { pages: genres?.pages[0], pageParams: [1] }
-  //     : genres;
 
   return (
     <>
@@ -44,7 +40,20 @@ const GenreList = () => {
                   boxSize="35px"
                   borderRadius={5}
                 />
-                <ListItem fontSize="lg">{genre.name}</ListItem>
+                <ListItem fontSize="lg">
+                  <Button
+                    textAlign="left"
+                    whiteSpace="normal"
+                    variant="link"
+                    onClick={() => onSelectGenre(genre.id)}
+                    fontWeight={
+                      selectedGenreId === genre.id ? "bold" : "normal"
+                    }
+                    fontSize="18px"
+                  >
+                    {genre.name}
+                  </Button>
+                </ListItem>
               </HStack>
             ))}
           </React.Fragment>

@@ -4,7 +4,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import React from "react";
 import GameCard from "./GameCard";
 
-const GameGrid = () => {
+interface Props {
+  selectedGenreId: number | null;
+}
+
+const GameGrid = ({ selectedGenreId }: Props) => {
   const pageSize = 20;
   const {
     data: games,
@@ -12,7 +16,7 @@ const GameGrid = () => {
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames(pageSize);
+  } = useGames({ pageSize, selectedGenreId });
 
   if (error) throw error;
   if (isLoading) return <Spinner />;

@@ -1,6 +1,4 @@
-import axios from "axios";
-import { GameQuery } from "../hooks/useGames";
-import { GenreQuery } from "../hooks/useGenres";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
@@ -22,14 +20,9 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = (query: GameQuery | GenreQuery) =>
+  getAll = (config: AxiosRequestConfig) =>
     axiosInstance
-      .get<FetchResponse<T>>(this.endpoint, {
-        params: {
-          page: query.page,
-          page_size: query.pageSize,
-        },
-      })
+      .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
 
   get = (id: number | string) =>
