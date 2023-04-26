@@ -4,6 +4,7 @@ import GameCard from "./GameCard";
 
 const GameGrid = () => {
   const { data: games, error, isLoading } = useGames();
+  console.log(games);
 
   if (error) throw error;
   if (isLoading) return <Spinner />;

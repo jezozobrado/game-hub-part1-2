@@ -10,6 +10,7 @@ interface Game {
   genres: Genre[];
   parent_platforms: { platform: Platform }[];
   website: string;
+  rating_top: number;
 }
 
 export default Game;
