@@ -5,6 +5,7 @@ import APIClient, { FetchResponse } from "../services/apiClient";
 export interface GameQuery {
   pageSize: number;
   selectedGenreId: number | null;
+  selectedPlatformId: number | null;
 }
 
 const useGames = (query: GameQuery) => {
@@ -17,6 +18,7 @@ const useGames = (query: GameQuery) => {
           page: pageParam,
           pageSize: query.pageSize,
           genres: query.selectedGenreId,
+          parent_platforms: query.selectedPlatformId,
         },
       }),
     staleTime: 24 * 60 * 60 * 1000,

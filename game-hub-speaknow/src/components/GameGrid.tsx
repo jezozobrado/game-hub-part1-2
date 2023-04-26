@@ -6,9 +6,10 @@ import GameCard from "./GameCard";
 
 interface Props {
   selectedGenreId: number | null;
+  selectedPlatformId: number | null;
 }
 
-const GameGrid = ({ selectedGenreId }: Props) => {
+const GameGrid = ({ selectedGenreId, selectedPlatformId }: Props) => {
   const pageSize = 20;
   const {
     data: games,
@@ -16,7 +17,7 @@ const GameGrid = ({ selectedGenreId }: Props) => {
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames({ pageSize, selectedGenreId });
+  } = useGames({ pageSize, selectedGenreId, selectedPlatformId });
 
   if (error) throw error;
   if (isLoading) return <Spinner />;
