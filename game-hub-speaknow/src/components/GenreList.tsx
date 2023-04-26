@@ -3,7 +3,6 @@ import useGenres from "../hooks/useGenres";
 
 const GenreList = () => {
   const { data: genres } = useGenres();
-  console.log(genres);
 
   return (
     <>
@@ -12,15 +11,13 @@ const GenreList = () => {
       </Heading>
       <List spacing={2}>
         {genres?.results.map((genre) => (
-          <HStack>
+          <HStack key={genre.id}>
             <Image
               src={genre.image_background}
               boxSize="35px"
               borderRadius={5}
             />
-            <ListItem key={genre.id} fontSize="lg">
-              {genre.name}
-            </ListItem>
+            <ListItem fontSize="lg">{genre.name}</ListItem>
           </HStack>
         ))}
       </List>
