@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GameQuery } from "../hooks/useGames";
 
 export interface FetchResponse<T> {
   count: number;
@@ -20,8 +21,15 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () =>
-    axiosInstance.get<FetchResponse<T>>(this.endpoint).then((res) => res.data);
+  getAll = (query: GameQuery) =>
+    axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, {
+        params: {
+          page: query.page,
+          page_size: query.pageSize,
+        },
+      })
+      .then((res) => res.data);
 
   get = (id: number | string) =>
     axiosInstance.get<T>(this.endpoint + "/" + id).then((res) => res.data);

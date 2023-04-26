@@ -2,12 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import Game from "../entities/Game";
 import APIClient, { FetchResponse } from "../services/apiClient";
 
-const useGames = () => {
+export interface GameQuery {
+  page: number;
+  pageSize: number;
+}
+
+const useGames = (query: GameQuery) => {
   const apiClient = new APIClient<Game>("/games");
   return useQuery<FetchResponse<Game>>({
-    queryKey: ["games"],
-    queryFn: apiClient.getAll,
+    queryKey: ["games", query],
+    queryFn: () => apiClient.getAll(query),
     staleTime: 24 * 60 * 60 * 1000,
+    keepPreviousData: true,
   });
 };
 
