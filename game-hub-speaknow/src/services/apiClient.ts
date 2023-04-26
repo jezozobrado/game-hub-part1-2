@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GameQuery } from "../hooks/useGames";
+import { GenreQuery } from "../hooks/useGenres";
 
 export interface FetchResponse<T> {
   count: number;
@@ -21,7 +22,7 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = (query: GameQuery) =>
+  getAll = (query: GameQuery | GenreQuery) =>
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, {
         params: {
