@@ -11,11 +11,8 @@ const apiClient = new APIClient<Genre>("/genres");
 const useGenres = (pageSize: number) => {
   return useInfiniteQuery<FetchResponse<Genre>>({
     queryKey: ["genres", pageSize],
-    queryFn: ({ pageParam }) => {
-      console.log(pageParam);
-
-      return apiClient.getAll({ page: pageParam, pageSize });
-    },
+    queryFn: ({ pageParam }) =>
+      apiClient.getAll({ params: { page: pageParam, pageSize } }),
     staleTime: 24 * 60 * 60 * 1000,
     keepPreviousData: true,
     getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
