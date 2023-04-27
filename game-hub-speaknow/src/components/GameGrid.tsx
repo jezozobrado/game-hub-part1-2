@@ -4,6 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import React from "react";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameTitle from "./GameTitle";
 
 const GameGrid = () => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -18,6 +19,7 @@ const GameGrid = () => {
 
   return (
     <>
+      <GameTitle />
       <InfiniteScroll
         dataLength={fetchedGamesCount}
         hasMore={!!hasNextPage}
