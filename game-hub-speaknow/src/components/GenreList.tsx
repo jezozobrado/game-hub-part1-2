@@ -10,6 +10,7 @@ import {
 import useGenres from "../hooks/useGenres";
 
 import useGameQueryStore from "../store";
+import { useNavigate } from "react-router-dom";
 
 const GenreList = () => {
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.selectedGenreId);
@@ -20,7 +21,7 @@ const GenreList = () => {
   if (error) return null;
 
   if (isLoading) return <Spinner />;
-
+  const navigate = useNavigate();
   return (
     <>
       <Heading fontSize="3xl" marginY={5}>
@@ -39,7 +40,10 @@ const GenreList = () => {
                 textAlign="left"
                 whiteSpace="normal"
                 variant="link"
-                onClick={() => setSelectedGenreId(genre.id)}
+                onClick={() => {
+                  navigate("/");
+                  return setSelectedGenreId(genre.id);
+                }}
                 fontWeight={selectedGenreId === genre.id ? "bold" : "normal"}
                 fontSize="18px"
               >
