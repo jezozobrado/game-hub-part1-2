@@ -9,12 +9,14 @@ interface Props {
   selectedGenreId: number | null;
   selectedPlatformId: number | null;
   selectedOrderSlug?: string;
+  searchText?: string;
 }
 
 const GameGrid = ({
   selectedGenreId,
   selectedPlatformId,
   selectedOrderSlug,
+  searchText,
 }: Props) => {
   const pageSize = 20;
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -29,17 +31,10 @@ const GameGrid = ({
     selectedGenreId,
     selectedPlatformId,
     selectedOrderSlug,
+    searchText,
   });
 
   if (error) throw error;
-  // if (isLoading)
-  //   return (
-  //     <>
-  //       {skeletons.map((skeleton) => (
-  //         <GameCardSkeleton key={skeleton} />
-  //       ))}
-  //     </>
-  //   );
 
   const fetchedGamesCount =
     games?.pages.reduce((acc, page) => page.results.length + acc, 0) || 0;

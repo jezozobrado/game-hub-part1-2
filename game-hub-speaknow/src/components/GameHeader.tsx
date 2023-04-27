@@ -23,14 +23,16 @@ const GameHeader = ({ gameName, gameSite, gameRatingTop }: Props) => {
           {gameName}
         </Heading>
       </Link>
-      <Image
-        src={ratingMap[gameRatingTop]}
-        boxSize={7}
-        display="inline"
-        marginLeft={3}
-        position="relative"
-        top={1}
-      />
+      {gameRatingTop === 0 ? null : (
+        <Image
+          src={ratingMap[gameRatingTop]}
+          boxSize={7}
+          display="inline"
+          marginLeft={3}
+          position="relative"
+          top={1}
+        />
+      )}
     </>
   );
 };

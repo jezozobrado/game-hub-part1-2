@@ -12,6 +12,7 @@ const App = () => {
     null
   );
   const [selectedOrder, setSelectedOrder] = useState<string | undefined>();
+  const [searchText, setSearchText] = useState<string>();
 
   return (
     <>
@@ -23,7 +24,7 @@ const App = () => {
         gridTemplateColumns={{ base: "1fr", lg: "180px 1fr" }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar onSubmit={(searchText) => setSearchText(searchText)} />
         </GridItem>
 
         <Show above="lg">
@@ -52,6 +53,7 @@ const App = () => {
             selectedGenreId={selectedGenreId}
             selectedPlatformId={selectedPlatformId}
             selectedOrderSlug={selectedOrder}
+            searchText={searchText}
           />
         </GridItem>
       </Grid>

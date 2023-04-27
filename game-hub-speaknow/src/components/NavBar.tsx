@@ -1,33 +1,16 @@
-import {
-  HStack,
-  Image,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Switch,
-  useColorMode,
-} from "@chakra-ui/react";
+import { HStack, Image, Switch, useColorMode } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
-import { BsSearch } from "react-icons/bs";
+import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface Props {
+  onSubmit: (searchText?: string) => void;
+}
+const NavBar = ({ onSubmit }: Props) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <HStack justifyContent="space-between" marginX={2}>
+    <HStack marginX={2}>
       <Image src={logo} boxSize="60px" />
-      <InputGroup outline="none">
-        <InputLeftElement
-          color="white"
-          pointerEvents="none"
-          children={<BsSearch _hover={{ color: "black" }} />}
-          // _hover={{ color: "black" }}
-        />
-        <Input
-          type="text"
-          placeholder="Search 849,391 games..."
-          _hover={{ bg: "white", color: "black" }}
-        />
-      </InputGroup>
+      <SearchInput onSubmit={(searchText) => onSubmit(searchText)} />
       <Switch
         colorScheme="green"
         isChecked={colorMode === "dark"}
