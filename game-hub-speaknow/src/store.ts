@@ -11,6 +11,7 @@ interface GameQuery {
 interface GameQueryStore {
   gameQuery: GameQuery;
   setGenreId: (genreId: number) => void;
+  setPlatformId: (platformId: number) => void;
 }
 
 const useGameQueryStore = create<GameQueryStore>((set) => ({
@@ -20,6 +21,13 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
       gameQuery: {
         ...store.gameQuery,
         selectedGenreId: genreId,
+      },
+    })),
+  setPlatformId: (platformId) =>
+    set((store) => ({
+      gameQuery: {
+        ...store.gameQuery,
+        selectedPlatformId: platformId,
       },
     })),
 }));

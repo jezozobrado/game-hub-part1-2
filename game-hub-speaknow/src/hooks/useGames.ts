@@ -5,7 +5,6 @@ import useGameQueryStore from "../store";
 
 interface GameQueryX {
   pageSize: number;
-  selectedPlatformId: number | null;
   selectedOrderSlug?: string;
   searchText?: string;
 }
@@ -22,7 +21,7 @@ const useGames = (query: GameQueryX) => {
           page: pageParam,
           pageSize: query.pageSize,
           genres: gameQuery.selectedGenreId,
-          parent_platforms: query.selectedPlatformId,
+          parent_platforms: gameQuery.selectedPlatformId,
           ordering: query.selectedOrderSlug,
           search: query.searchText,
         },

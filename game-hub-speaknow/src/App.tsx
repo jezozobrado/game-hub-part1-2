@@ -7,9 +7,6 @@ import PlatformSelector from "./components/PlatformSelector";
 import OrderSelector from "./components/OrderSelector";
 
 const App = () => {
-  const [selectedPlatformId, setSelectedPlatform] = useState<number | null>(
-    null
-  );
   const [selectedOrder, setSelectedOrder] = useState<string | undefined>();
   const [searchText, setSearchText] = useState<string>();
 
@@ -38,18 +35,9 @@ const App = () => {
               selectedOrder={selectedOrder}
               onSelectOrder={(orderSlug) => setSelectedOrder(orderSlug)}
             />
-            <PlatformSelector
-              selectedPlatform={selectedPlatformId}
-              onSelectPlatform={(selectedPlatform) =>
-                setSelectedPlatform(selectedPlatform)
-              }
-            />
+            <PlatformSelector />
           </HStack>
-          <GameGrid
-            selectedPlatformId={selectedPlatformId}
-            selectedOrderSlug={selectedOrder}
-            searchText={searchText}
-          />
+          <GameGrid selectedOrderSlug={selectedOrder} searchText={searchText} />
         </GridItem>
       </Grid>
     </>
