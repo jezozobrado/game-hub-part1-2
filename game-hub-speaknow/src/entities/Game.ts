@@ -11,6 +11,7 @@ interface Game {
   parent_platforms: { platform: Platform }[];
   website: string;
   rating_top: number;
+  description_raw: string;
 }
 
 export default Game;

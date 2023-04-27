@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 interface Props {
   gameName: string;
   gameRatingTop: number;
-  gameId: number;
+  gameSlug: string;
 }
 
-const GameHeader = ({ gameName, gameId, gameRatingTop }: Props) => {
+const GameHeader = ({ gameName, gameSlug, gameRatingTop }: Props) => {
   const ratingMap: { [key: number]: string } = {
     5: bullsEye,
     4: thumbsUp,
@@ -19,7 +19,7 @@ const GameHeader = ({ gameName, gameId, gameRatingTop }: Props) => {
 
   return (
     <>
-      <Link to={"/games/" + gameId}>
+      <Link to={"/games/" + gameSlug}>
         <Heading fontSize="2xl" display="inline">
           {gameName}
         </Heading>
