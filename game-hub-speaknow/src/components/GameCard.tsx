@@ -30,7 +30,7 @@ const GameCard = ({ game }: Props) => {
             </HStack>
             <GameHeader
               gameName={game.name}
-              gameSite={game.website}
+              gameId={game.id}
               gameRatingTop={game.rating_top}
             />
           </Box>
