@@ -10,7 +10,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data } = usePlatforms();
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />} marginBottom={4}>
+      <MenuButton as={Button} leftIcon={<BsChevronDown />}>
         {selectedPlatform
           ? data?.results.find((d) => d.id === selectedPlatform)?.name
           : "Platforms"}
