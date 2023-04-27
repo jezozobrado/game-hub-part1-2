@@ -7,7 +7,6 @@ import PlatformSelector from "./components/PlatformSelector";
 import OrderSelector from "./components/OrderSelector";
 
 const App = () => {
-  const [selectedOrder, setSelectedOrder] = useState<string | undefined>();
   const [searchText, setSearchText] = useState<string>();
 
   return (
@@ -31,13 +30,10 @@ const App = () => {
 
         <GridItem area="main" padding="10px">
           <HStack marginBottom={4}>
-            <OrderSelector
-              selectedOrder={selectedOrder}
-              onSelectOrder={(orderSlug) => setSelectedOrder(orderSlug)}
-            />
+            <OrderSelector />
             <PlatformSelector />
           </HStack>
-          <GameGrid selectedOrderSlug={selectedOrder} searchText={searchText} />
+          <GameGrid searchText={searchText} />
         </GridItem>
       </Grid>
     </>

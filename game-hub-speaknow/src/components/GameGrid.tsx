@@ -6,11 +6,10 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 interface Props {
-  selectedOrderSlug?: string;
   searchText?: string;
 }
 
-const GameGrid = ({ selectedOrderSlug, searchText }: Props) => {
+const GameGrid = ({ searchText }: Props) => {
   const pageSize = 20;
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const {
@@ -21,7 +20,6 @@ const GameGrid = ({ selectedOrderSlug, searchText }: Props) => {
     hasNextPage,
   } = useGames({
     pageSize,
-    selectedOrderSlug,
     searchText,
   });
 
