@@ -51,6 +51,7 @@ const App = () => {
           <GameGrid
             selectedGenreId={selectedGenreId}
             selectedPlatformId={selectedPlatformId}
+            selectedOrderSlug={selectedOrder}
           />
         </GridItem>
       </Grid>

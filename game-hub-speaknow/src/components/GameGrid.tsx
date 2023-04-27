@@ -8,9 +8,14 @@ import GameCardSkeleton from "./GameCardSkeleton";
 interface Props {
   selectedGenreId: number | null;
   selectedPlatformId: number | null;
+  selectedOrderSlug?: string;
 }
 
-const GameGrid = ({ selectedGenreId, selectedPlatformId }: Props) => {
+const GameGrid = ({
+  selectedGenreId,
+  selectedPlatformId,
+  selectedOrderSlug,
+}: Props) => {
   const pageSize = 20;
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const {
@@ -19,7 +24,12 @@ const GameGrid = ({ selectedGenreId, selectedPlatformId }: Props) => {
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames({ pageSize, selectedGenreId, selectedPlatformId });
+  } = useGames({
+    pageSize,
+    selectedGenreId,
+    selectedPlatformId,
+    selectedOrderSlug,
+  });
 
   if (error) throw error;
   // if (isLoading)

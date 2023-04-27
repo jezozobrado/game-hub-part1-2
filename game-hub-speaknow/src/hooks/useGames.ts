@@ -6,6 +6,7 @@ export interface GameQuery {
   pageSize: number;
   selectedGenreId: number | null;
   selectedPlatformId: number | null;
+  selectedOrderSlug?: string;
 }
 
 const useGames = (query: GameQuery) => {
@@ -19,6 +20,7 @@ const useGames = (query: GameQuery) => {
           pageSize: query.pageSize,
           genres: query.selectedGenreId,
           parent_platforms: query.selectedPlatformId,
+          ordering: query.selectedOrderSlug,
         },
       }),
     staleTime: 24 * 60 * 60 * 1000,
