@@ -14,7 +14,7 @@ const useGenres = (pageSize: number) => {
     queryFn: ({ pageParam }) =>
       apiClient.getAll({ params: { page: pageParam, pageSize } }),
     staleTime: 24 * 60 * 60 * 1000,
-    keepPreviousData: true,
+    // keepPreviousData: true,
     getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
     getPreviousPageParam: (firstPage, _allPages) => firstPage,
   });
