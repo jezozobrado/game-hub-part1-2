@@ -5,13 +5,10 @@ import React from "react";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 
-interface Props {
-  searchText?: string;
-}
-
-const GameGrid = ({ searchText }: Props) => {
+const GameGrid = () => {
   const pageSize = 20;
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+
   const {
     data: games,
     error,
@@ -20,7 +17,6 @@ const GameGrid = ({ searchText }: Props) => {
     hasNextPage,
   } = useGames({
     pageSize,
-    searchText,
   });
 
   if (error) throw error;

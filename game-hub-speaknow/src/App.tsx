@@ -1,14 +1,11 @@
 import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
-import { useState } from "react";
-import PlatformSelector from "./components/PlatformSelector";
+import NavBar from "./components/NavBar";
 import OrderSelector from "./components/OrderSelector";
+import PlatformSelector from "./components/PlatformSelector";
 
 const App = () => {
-  const [searchText, setSearchText] = useState<string>();
-
   return (
     <>
       <Grid
@@ -19,7 +16,7 @@ const App = () => {
         gridTemplateColumns={{ base: "1fr", lg: "180px 1fr" }}
       >
         <GridItem area="nav">
-          <NavBar onSubmit={(searchText) => setSearchText(searchText)} />
+          <NavBar />
         </GridItem>
 
         <Show above="lg">
@@ -33,7 +30,7 @@ const App = () => {
             <OrderSelector />
             <PlatformSelector />
           </HStack>
-          <GameGrid searchText={searchText} />
+          <GameGrid />
         </GridItem>
       </Grid>
     </>

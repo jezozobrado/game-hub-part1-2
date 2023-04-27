@@ -2,15 +2,12 @@ import { HStack, Image, Switch, useColorMode } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import SearchInput from "./SearchInput";
 
-interface Props {
-  onSubmit: (searchText?: string) => void;
-}
-const NavBar = ({ onSubmit }: Props) => {
+const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <HStack marginX={2}>
       <Image src={logo} boxSize="60px" />
-      <SearchInput onSubmit={(searchText) => onSubmit(searchText)} />
+      <SearchInput />
       <Switch
         colorScheme="green"
         isChecked={colorMode === "dark"}
