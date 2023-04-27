@@ -7,7 +7,6 @@ import PlatformSelector from "./components/PlatformSelector";
 import OrderSelector from "./components/OrderSelector";
 
 const App = () => {
-  const [selectedGenreId, setSelectedGenre] = useState<number | null>(null);
   const [selectedPlatformId, setSelectedPlatform] = useState<number | null>(
     null
   );
@@ -29,10 +28,7 @@ const App = () => {
 
         <Show above="lg">
           <GridItem area="aside" paddingLeft={4}>
-            <GenreList
-              onSelectGenre={(selectedGenre) => setSelectedGenre(selectedGenre)}
-              selectedGenreId={selectedGenreId}
-            />
+            <GenreList />
           </GridItem>
         </Show>
 
@@ -50,7 +46,6 @@ const App = () => {
             />
           </HStack>
           <GameGrid
-            selectedGenreId={selectedGenreId}
             selectedPlatformId={selectedPlatformId}
             selectedOrderSlug={selectedOrder}
             searchText={searchText}

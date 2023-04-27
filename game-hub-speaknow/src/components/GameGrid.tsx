@@ -6,14 +6,12 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 interface Props {
-  selectedGenreId: number | null;
   selectedPlatformId: number | null;
   selectedOrderSlug?: string;
   searchText?: string;
 }
 
 const GameGrid = ({
-  selectedGenreId,
   selectedPlatformId,
   selectedOrderSlug,
   searchText,
@@ -28,7 +26,6 @@ const GameGrid = ({
     hasNextPage,
   } = useGames({
     pageSize,
-    selectedGenreId,
     selectedPlatformId,
     selectedOrderSlug,
     searchText,
@@ -40,24 +37,26 @@ const GameGrid = ({
     games?.pages.reduce((acc, page) => page.results.length + acc, 0) || 0;
 
   return (
-    <InfiniteScroll
-      dataLength={fetchedGamesCount}
-      hasMore={!!hasNextPage}
-      next={() => fetchNextPage()}
-      loader={<Spinner />}
-    >
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
-        {isLoading
-          ? skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)
-          : games?.pages.map((page, index) => (
-              <React.Fragment key={index}>
-                {page.results.map((game) => (
-                  <GameCard key={game.id} game={game} />
-                ))}
-              </React.Fragment>
-            ))}
-      </SimpleGrid>
-    </InfiniteScroll>
+    <>
+      <InfiniteScroll
+        dataLength={fetchedGamesCount}
+        hasMore={!!hasNextPage}
+        next={() => fetchNextPage()}
+        loader={<Spinner />}
+      >
+        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+          {isLoading
+            ? skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)
+            : games?.pages.map((page, index) => (
+                <React.Fragment key={index}>
+                  {page.results.map((game) => (
+                    <GameCard key={game.id} game={game} />
+                  ))}
+                </React.Fragment>
+              ))}
+        </SimpleGrid>
+      </InfiniteScroll>
+    </>
   );
 };
 

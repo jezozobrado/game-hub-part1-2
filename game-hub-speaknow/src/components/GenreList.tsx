@@ -11,13 +11,12 @@ import {
 import useGenres from "../hooks/useGenres";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import React from "react";
+import useGameQueryStore from "../store";
 
-interface Props {
-  selectedGenreId: number | null;
-  onSelectGenre: (selectedGenreId: number | null) => void;
-}
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
   const pageSize = 12;
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.selectedGenreId);
+  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
   const {
     data: genres,
@@ -45,7 +44,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                     textAlign="left"
                     whiteSpace="normal"
                     variant="link"
-                    onClick={() => onSelectGenre(genre.id)}
+                    onClick={() => setSelectedGenreId(genre.id)}
                     fontWeight={
                       selectedGenreId === genre.id ? "bold" : "normal"
                     }
