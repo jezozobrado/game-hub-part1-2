@@ -6,6 +6,7 @@ import GameDetailLinkTree from "./GameDetailLinkTree";
 import GameDetailHeader from "./GameDetailHeader";
 import GameDetailRatings from "./GameDetailRatings";
 import GameDetailTrailer from "./GameDetailTrailer";
+import GameDetailScreenshots from "./GameDetailScreenshots";
 
 const GameDetails = () => {
   const { slug } = useParams();
@@ -35,6 +36,7 @@ const GameDetails = () => {
         </GridItem>
         <GridItem>
           <GameDetailTrailer slug={game.slug} />
+          <GameDetailScreenshots slug={game.slug} />
         </GridItem>
       </Grid>
     </>
