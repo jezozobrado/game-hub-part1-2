@@ -15,7 +15,15 @@ const GameDetails = () => {
 
   return (
     <>
-      <Grid templateColumns="3fr 2fr" paddingX="80px" gap={10} paddingY={10}>
+      <Grid
+        templateColumns={{
+          base: "1fr",
+          lg: "3fr 2fr",
+        }}
+        paddingX={{ base: "10px", lg: "80px" }}
+        gap={10}
+        paddingY={10}
+      >
         <GridItem>
           <Box>
             <GameDetailLinkTree game={game} />
