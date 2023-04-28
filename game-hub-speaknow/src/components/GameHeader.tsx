@@ -1,8 +1,7 @@
-import { Heading, Image } from "@chakra-ui/react";
-import bullsEye from "../assets/bulls-eye.webp";
-import meh from "../assets/meh.webp";
-import thumbsUp from "../assets/thumbs-up.webp";
+import { Heading } from "@chakra-ui/react";
+
 import { Link } from "react-router-dom";
+import GameRating from "./GameRating";
 
 interface Props {
   gameName: string;
@@ -11,12 +10,6 @@ interface Props {
 }
 
 const GameHeader = ({ gameName, gameSlug, gameRatingTop }: Props) => {
-  const ratingMap: { [key: number]: string } = {
-    5: bullsEye,
-    4: thumbsUp,
-    3: meh,
-  };
-
   return (
     <>
       <Link to={"/games/" + gameSlug}>
@@ -24,16 +17,7 @@ const GameHeader = ({ gameName, gameSlug, gameRatingTop }: Props) => {
           {gameName}
         </Heading>
       </Link>
-      {gameRatingTop in ratingMap ? (
-        <Image
-          src={ratingMap[gameRatingTop]}
-          boxSize={7}
-          display="inline"
-          marginLeft={3}
-          position="relative"
-          top={1}
-        />
-      ) : null}
+      <GameRating gameRatingTop={gameRatingTop} />
     </>
   );
 };

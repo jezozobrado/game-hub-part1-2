@@ -1,6 +1,13 @@
 import { Genre } from "./Genre";
 import { Platform } from "./Platform";
 
+interface Ratings {
+  id: number;
+  title: string;
+  count: number;
+  percent: number;
+}
+
 interface Game {
   id: number;
   name: string;
@@ -14,6 +21,7 @@ interface Game {
   description_raw: string;
   released: string;
   playtime: number;
+  ratings: Ratings[];
 }
 
 export default Game;
