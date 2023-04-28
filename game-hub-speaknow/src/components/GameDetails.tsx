@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import ExpandableText from "./ExpandableText";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading } from "@chakra-ui/react";
 import GameDetailLinkTree from "./GameDetailLinkTree";
 import GameDetailHeader from "./GameDetailHeader";
 import GameDetailRatings from "./GameDetailRatings";
+import GameDetailTrailer from "./GameDetailTrailer";
 
 const GameDetails = () => {
   const { slug } = useParams();
@@ -14,13 +15,20 @@ const GameDetails = () => {
 
   return (
     <>
-      <Box padding={3}>
-        <GameDetailLinkTree game={game} />
-        <GameDetailHeader game={game} />
-        <Heading fontSize="70px">{game.name}</Heading>
-        <ExpandableText children={game.description_raw} />
-        <GameDetailRatings game={game} />
-      </Box>
+      <Grid templateColumns="3fr 2fr" paddingX="80px" gap={10} paddingY={10}>
+        <GridItem>
+          <Box>
+            <GameDetailLinkTree game={game} />
+            <GameDetailHeader game={game} />
+            <Heading fontSize="70px">{game.name}</Heading>
+            <ExpandableText children={game.description_raw} />
+            <GameDetailRatings game={game} />
+          </Box>
+        </GridItem>
+        <GridItem>
+          <GameDetailTrailer slug={game.slug} />
+        </GridItem>
+      </Grid>
     </>
   );
 };

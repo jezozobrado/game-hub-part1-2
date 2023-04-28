@@ -9,7 +9,7 @@ interface Props {
 
 const GameDetailLinkTree = ({ game }: Props) => {
   return (
-    <HStack marginY={6} color="gray.500" fontSize="sm">
+    <HStack marginBottom={6} color="gray.500" fontSize="sm">
       <Link to="/">
         <Text _hover={{ color: "white", transition: "color 0.15s ease-in" }}>
           HOME
