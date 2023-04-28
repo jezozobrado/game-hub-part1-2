@@ -35,6 +35,7 @@ const GameDetailRatings = ({ game }: Props) => {
         <Flex>
           {game.ratings.map((rating) => (
             <Badge
+              key={rating.id}
               borderRadius={10}
               paddingY={1}
               paddingX={2}

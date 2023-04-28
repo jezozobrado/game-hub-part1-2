@@ -14,7 +14,7 @@ const GameDetails = () => {
 
   return (
     <>
-      <Box>
+      <Box padding={3}>
         <GameDetailLinkTree game={game} />
         <GameDetailHeader game={game} />
         <Heading fontSize="70px">{game.name}</Heading>
