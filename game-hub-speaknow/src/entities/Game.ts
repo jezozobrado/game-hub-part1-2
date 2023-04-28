@@ -12,6 +12,8 @@ interface Game {
   website: string;
   rating_top: number;
   description_raw: string;
+  released: string;
+  playtime: number;
 }
 
 export default Game;

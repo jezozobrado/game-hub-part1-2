@@ -14,7 +14,7 @@ import { SiNintendo } from "react-icons/si";
 import { Platform } from "../entities/Platform";
 
 interface Props {
-  gamePlatforms: { platform: Platform }[];
+  gamePlatforms?: { platform: Platform }[];
 }
 
 const PlatformList = ({ gamePlatforms }: Props) => {
@@ -32,11 +32,11 @@ const PlatformList = ({ gamePlatforms }: Props) => {
 
   return (
     <HStack>
-      {gamePlatforms.map(({ platform }) => (
+      {gamePlatforms?.map(({ platform }) => (
         <Icon
           key={platform.id}
           as={iconMap[platform.slug]}
-          color="gray.600"
+          color="gray.300"
           boxSize="20px"
         />
       ))}

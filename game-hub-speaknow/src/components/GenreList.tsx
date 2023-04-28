@@ -17,11 +17,12 @@ const GenreList = () => {
   const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
   const { data: genres, isLoading, error } = useGenres();
+  const navigate = useNavigate();
 
   if (error) return null;
 
   if (isLoading) return <Spinner />;
-  const navigate = useNavigate();
+
   return (
     <>
       <Heading fontSize="3xl" marginY={5}>
